@@ -36,19 +36,27 @@ public class Guesser{
     Random random = new Random();
     Scanner input = new Scanner(System.in);
     int randomInt = random.nextInt(100)+1;
-    System.out.println(randomInt);
     while(keepGoing){
       i++;
       System.out.print(i + ") Please enter a number: ");
       humGuess = input.nextInt();
       if(randomInt < humGuess){
-        System.out.println("To high");
+        System.out.println("Too high");
       } // end if
       if(randomInt > humGuess){
-        System.out.println("To low");
+        System.out.println("Too low");
       } // end if
       if(randomInt == humGuess){
-        System.out.println("Correct\n");
+        System.out.println("Correct");
+	if(i > 7){
+          System.out.println("Do you even know what the objective is?\n");
+	} // end if
+	if(i == 7){
+          System.out.println("Very average\n");
+	} // end if
+	if(i < 7){
+          System.out.println("Great job\n");
+	} // end if
 	keepGoing=false;
       } // end if
     } // end while
@@ -56,13 +64,7 @@ public class Guesser{
   static void computer(){
     boolean keepGoing=true;
     int i=0;
-    int highNum=100;
-    int lowNum=1;
     int comGuess=50;
-    nums= new int[100];
-    for(int j=0;j > 100; j++){
-      nums[j]=j+1;
-    }
     double num=50;
     String humHint;
     Scanner input = new Scanner(System.in);
@@ -74,11 +76,12 @@ public class Guesser{
       humHint=input.nextLine();
 
       if(humHint.equals("H")){
-        
-	comGuess=(int)num;
+        num=Math.ceil(num*.5);
+	comGuess=comGuess - (int)num;
       } // end if
       if(humHint.equals("L")){
-        comGuess=(int)num;
+	num=Math.ceil(num*.5);
+        comGuess=comGuess+(int)num;
       } // end if
       if(humHint.equals("C")){
         System.out.println();
