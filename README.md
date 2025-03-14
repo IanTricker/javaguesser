@@ -47,6 +47,7 @@ while (keepGoing)
 bool keepGoing=true
 int i=0
 int comGuess=50
+double num=50
 String humHint
 print "computer guesser"
 while(keepGoing)
@@ -55,9 +56,11 @@ while(keepGoing)
   print "Too (H)igh, too (L)ow, or (C)orrect? "
   humHint = userinput
   if(humHint==H)
-    comGuess = comGuess * .5
+    num = num * .5 (round up)
+    comGuess = comGuess - num
   if(humHint==L)
-    comGuess = comGuess * 1.5
+    num = num * .5 (round up)
+    comGuess = comGuess + num
   if(humHint==C)
     print"Good job robot"
     keepGoing=false
